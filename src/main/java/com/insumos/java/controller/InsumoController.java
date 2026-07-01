@@ -27,7 +27,7 @@ public class InsumoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<InsumoEntity> buscarUmInsumo(@PathVariable Long id){
-        return ResponseEntity.ok(service.buscaUmInsumo(id));
+        return ResponseEntity.ok(service.buscarUmInsumo(id));
     }
 
     @PutMapping("/{id}")

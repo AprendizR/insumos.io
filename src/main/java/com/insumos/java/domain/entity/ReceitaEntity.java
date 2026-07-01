@@ -1,11 +1,13 @@
 package com.insumos.java.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,20 +23,17 @@ public class ReceitaEntity {
     private Long id;
 
     @Column(name = "tempo_gas")
-    private String tempoGas;
+    private Double tempoGas;
 
     @Column(name = "tempo_energia")
-    private String tempoEnergia;
+    private Double tempoEnergia;
 
-    @Column(name = "valor_receita")
-    private String valorReceita;
+    @Column(name = "custo_total")
+    private Double custoTotal;
 
-    @OneToMany
-    @JoinColumn(name = "insumo_id")
-    private List<InsumoEntity> insumo;
-
-    @OneToMany
-    @JoinColumn(name = "venda_id")
-    private List<VendaEntity> venda;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "receita_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private List<ItemReceitaEntity> ingredientes = new ArrayList<>();
 
 }
