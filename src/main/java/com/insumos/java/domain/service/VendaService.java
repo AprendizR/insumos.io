@@ -12,10 +12,8 @@ import java.util.List;
 public class VendaService {
     private final VendaRepository repository;
 
-    public VendaEntity criarVenda(VendaEntity entity) {
-        if (entity.getId() != null) {
-            repository.findById(entity.getId()).orElseThrow(() -> new RuntimeException("Venda já realizada"));
-        }
+    public VendaEntity adicionarVenda(VendaEntity entity) {
+        buscarUmaVenda(entity.getId());
         return repository.save(entity);
     }
 
@@ -23,12 +21,12 @@ public class VendaService {
         return repository.findAll();
     }
 
-    public VendaEntity buscaUmaVenda(Long id) {
+    public VendaEntity buscarUmaVenda(Long id) {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Venda não encontrada"));
     }
 
     public VendaEntity atualizarVenda(Long id, VendaEntity entity) {
-        VendaEntity venda = repository.findById(id).orElseThrow(() -> new RuntimeException("Venda não encontrada"));
+        VendaEntity venda = buscarUmaVenda(id);
         if (entity.getNomeProduto() != null) {
             venda.setNomeProduto(entity.getNomeProduto());
         }
@@ -42,7 +40,7 @@ public class VendaService {
     }
 
     public void excluirVenda(Long id) {
-        repository.findById(id).orElseThrow(() -> new RuntimeException("Venda não encontrada"));
+        buscarUmaVenda(id);
         repository.deleteById(id);
     }
 }

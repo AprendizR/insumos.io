@@ -16,8 +16,8 @@ public class VendaController {
     private final VendaService service;
 
     @PostMapping
-    public ResponseEntity<VendaEntity> criarVenda(@RequestBody VendaEntity entity) {
-        return ResponseEntity.ok(service.criarVenda(entity));
+    public ResponseEntity<VendaEntity> adicionarVenda(@RequestBody VendaEntity entity) {
+        return ResponseEntity.ok(service.adicionarVenda(entity));
     }
 
     @GetMapping
@@ -26,8 +26,8 @@ public class VendaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VendaEntity> buscaUmaVenda(@PathVariable Long id) {
-        return ResponseEntity.ok(service.buscaUmaVenda(id));
+    public ResponseEntity<VendaEntity> buscarUmaVenda(@PathVariable Long id) {
+        return ResponseEntity.ok(service.buscarUmaVenda(id));
     }
 
     @PutMapping("/{id}")
