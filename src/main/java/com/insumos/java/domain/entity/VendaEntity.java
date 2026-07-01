@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table (name = "vendas")
+@Table(name = "vendas")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,8 +26,13 @@ public class VendaEntity {
     private String formaPagamento;
 
     @Column(name = "preco_venda")
-    private double precoVenda;
+    private String precoVenda;
 
     @Column(name = "data_venda")
     private LocalDateTime dataVenda;
+
+    @PrePersist
+    public void prePersist() {
+        this.dataVenda = LocalDateTime.now();
+    }
 }

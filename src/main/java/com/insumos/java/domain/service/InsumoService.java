@@ -24,25 +24,25 @@ public class InsumoService {
     }
 
     public InsumoEntity buscaUmInsumo(Long id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Insumo inexistente"));
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("Insumo não encontrado"));
     }
 
     public InsumoEntity atualizarInsumo(Long id, InsumoEntity entity) {
-        InsumoEntity insumo = repository.findById(id).orElseThrow(() -> new RuntimeException("Insumo inexistente"));
+        InsumoEntity insumo = repository.findById(id).orElseThrow(() -> new RuntimeException("Insumo não encontrado"));
         if (entity.getNomeInsumo() != null) {
             insumo.setNomeInsumo(entity.getNomeInsumo());
         }
         if (entity.getPrecoInsumo() != null) {
             insumo.setPrecoInsumo(entity.getPrecoInsumo());
         }
-        if (entity.getQuantidadeInsumo() != null){
+        if (entity.getQuantidadeInsumo() != null) {
             insumo.setQuantidadeInsumo(entity.getQuantidadeInsumo());
         }
         return repository.save(insumo);
     }
 
-    public void excluirInsumo(Long id){
-        repository.findById(id).orElseThrow(()-> new RuntimeException("Insumo inexistente"));
+    public void excluirInsumo(Long id) {
+        repository.findById(id).orElseThrow(() -> new RuntimeException("Insumo inexistente"));
         repository.deleteById(id);
     }
 }

@@ -2,8 +2,6 @@ package com.insumos.java.controller;
 
 import com.insumos.java.domain.entity.InsumoEntity;
 import com.insumos.java.domain.service.InsumoService;
-import com.insumos.java.domain.service.ReceitaService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
