@@ -16,6 +16,12 @@ public class InsumoService {
         if (entity.getId() != null) {
             repository.findById(entity.getId()).orElseThrow(() -> new RuntimeException("Insumo já cadastrado"));
         }
+        if (entity.getQuantidadeAtual() == null){
+            entity.setQuantidadeAtual(0.0);
+        }
+        if (entity.getCustoMedioUnitario() == null){
+            entity.setCustoMedioUnitario(0.0);
+        }
         return repository.save(entity);
     }
 
