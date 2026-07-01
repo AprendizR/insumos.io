@@ -21,13 +21,13 @@ public class ReceitaEntity {
     private Long id;
 
     @Column(name = "tempo_gas")
-    private int tempoGas;
+    private String tempoGas;
 
     @Column(name = "tempo_energia")
-    private int tempoEnergia;
+    private String tempoEnergia;
 
     @Column(name = "valor_receita")
-    private double valorReceita;
+    private String valorReceita;
 
     @OneToMany
     @JoinColumn(name = "insumo_id")

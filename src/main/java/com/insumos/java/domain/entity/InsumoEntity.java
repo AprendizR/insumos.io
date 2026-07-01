@@ -1,14 +1,12 @@
 package com.insumos.java.domain.entity;
 
+import com.insumos.java.domain.Enum.UnidadeMedidaEnum;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table (name = "insumos")
+@Table(name = "insumos")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,13 +20,17 @@ public class InsumoEntity {
     @Column(name = "nome_insumo")
     private String nomeInsumo;
 
-    @Column(name = "preco_insumo")
-    private String precoInsumo;
+    @Column(name = "quantidade_atual")
+    private Double quantidadeAtual;
 
-    @Column(name = "quantidade_insumo")
-    private String quantidadeInsumo;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "unidade_medida")
+    private UnidadeMedidaEnum unidadeMedida;
 
-    @Column(name = "data_insumo")
+    @Column(name = "custo_medio_unitario")
+    private Double custoMedioUnitario;
+
+    @Column(name = "data_insumo", updatable = false)
     private LocalDateTime dataCriacao;
 
     @PrePersist
